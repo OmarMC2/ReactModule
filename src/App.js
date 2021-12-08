@@ -23,7 +23,7 @@ function App() {
         <Saludar firstName="Omar" lastName="Mijangos"/>
         <Saludar firstName="Oscar" lastName="CasTIllo"/>
         <Saludar firstName="David" lastName="Moranchel"/>
-        <Calculadora firstValue={3} secondValue={4} operator={"suma"}/>
+        <Calculadora firstValue={43} secondValue={54} operator={"resta"}/>
       </header>
     </div>
   );

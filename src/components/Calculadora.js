@@ -2,34 +2,51 @@ import React from "react";
 
 
 function Calculadora({firstValue, secondValue, operator="" }) {
+    if(!Number.isInteger(firstValue) === true )
+        return(
+            <div>
+                <span>El primer valor no es valido </span>
+            </div>
+        )
+    if(!Number.isInteger(secondValue) === true )
+        return(
+            <div>
+                <span>El segundo valor no es valido</span>
+            </div>
+        )
+    // if(!['suma','resta','multiplicacion', 'division'].includes(operator) === true )
+    //     return(
+    //         <div>
+    //             <span>El operador no es valido no es valido</span>
+    //         </div>
+    //     )
+
+    
     let result = 0;
 switch (operator) {
     case 'suma':
-        result =firstValue+secondValue
-    firstValue && secondValue === Number? result: 'Uno de los valores no es un numero'    
+        result =firstValue+secondValue    
         break;
     case 'resta':
-        result =firstValue-secondValue
-        firstValue && secondValue === Number? result: 'Uno de los valores no es un numero'    
-
+        result =firstValue-secondValue   
         break;
-    case 'multi':
+    case 'multiplicacion':
         result =firstValue*secondValue
-        firstValue && secondValue === Number? result: 'Uno de los valores no es un numero'    
-
         break;
-    case 'div':
-        result =firstValue/secondValue
-        firstValue && secondValue === Number? result: 'Uno de los valores no es un numero'    
-
+    case 'division':
+        result =firstValue/secondValue   
         break
     default:
-       result = 'El operador no es valido';
-        break;
+        return(
+       <div>
+           <span> El operador no es valido </span>
+       </div>
+        )
 }
-    return(<div>
-            <h2>el resultado de la operacion es: {result} </h2>
-        </div>)
+return(<div>
+        <span>El resultado de su {operator} es igual a {result}</span>
+    </div>)
+    
 }
 
 export default Calculadora;
