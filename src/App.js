@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import Saludar from './components/Saludar';
+import Calculadora from './components/Calculadora';
 
 function App() {
   return (
@@ -15,8 +17,13 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React holi
         </a>
+
+        <Saludar firstName="Omar" lastName="Mijangos"/>
+        <Saludar firstName="Oscar" lastName="CasTIllo"/>
+        <Saludar firstName="David" lastName="Moranchel"/>
+        <Calculadora firstValue={3} secondValue={4} operator={"suma"}/>
       </header>
     </div>
   );
