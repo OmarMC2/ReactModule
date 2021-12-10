@@ -1,0 +1,22 @@
+.content{
+    min-width: 100%;
+}
+.navBarContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    min-width: 100%;
+    background-color: rgb(23, 76, 233);
+
+}
+.unactive{
+    color: white;
+    min-width: 300px;
+}
+.unactive:hover{
+    background-color: royalblue;
+}
+.active{
+    background-color:rgb(4, 43, 158);
+    min-width: 300px;
+}
