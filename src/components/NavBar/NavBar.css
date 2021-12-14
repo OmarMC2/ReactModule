@@ -1,22 +1,24 @@
-.content{
-    min-width: 100%;
+ul {
+	list-style: none;
 }
-.navBarContent{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    min-width: 100%;
-    background-color: rgb(23, 76, 233);
 
+li {
+	font-weight: bold;
+	cursor: pointer;
 }
-.unactive{
-    color: white;
-    min-width: 300px;
+
+li:hover {
+	color: rgb(28, 98, 228);
 }
-.unactive:hover{
-    background-color: royalblue;
+
+.li-active {
+	color: rgb(26, 87, 200);
 }
-.active{
-    background-color:rgb(4, 43, 158);
-    min-width: 300px;
+
+.h1-active {
+	display: block;
+}
+
+.h1-inactive {
+	display: none;
 }

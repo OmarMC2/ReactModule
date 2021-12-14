@@ -1,0 +1,23 @@
+.cardContent{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2d3134;
+    padding: 50px;
+    margin:50px;
+    border-radius: 3%;
+}
+.imagStyle{
+    border-radius: 100%;
+}
+.characterInfo {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    color: rgb(98, 178, 231);
+}
+.infoElement{
+    padding:12px;
+}
