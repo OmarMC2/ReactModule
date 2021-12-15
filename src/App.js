@@ -1,56 +1,66 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { useEffect, useState } from "react";
 
 // Components
-import NavBar from "./components/NavBar";
-import UserName from "./components/UserName";
-import CharacterCard from "./components/CharacterCard";
+import Character from "./components/Character";
+
+// Services
+import { listCharacters } from "./services/characters";
 
 function App() {
-	const [users, setUsers] = useState([]);
-	const [characters, setCharacters] = useState([])
-	
+	const [characters, setCharacters] = useState([]);
+	const [data, setData] = useState({});
+	const [buttonState, setButtonState]
 	useEffect(() => {
-		const getUsers = async () => {
-			const response = await fetch("users.json");
-			console.table(response);
-			const data = await response.json();
-			console.log(data);
-			setUsers(data);
+		const list = async () => {
+			const { results, info } = await listCharacters();
+			setCharacters(results);
+			setData(info);
 		};
-
-		getUsers();
+		list();
 	}, []);
 
-	const usersUI = users.map(({ id, firstName, lastName }) => (
-		<UserName key={id} firstName={firstName} lastName={lastName} />
-	));
-	 useEffect(()=>{
-		 const getCharacters = async () =>{
-			const response = await fetch ("https://rickandmortyapi.com/api/character");
-			
-			const preData = await response.json();
-			const data = preData.results;
-			setCharacters(data)	
-			
-		 };
-		 getCharacters();
-	 },[]);
-	const CharactersUI = characters.map(({id, name, status, species, image}) => (
-		<CharacterCard key={id} name={name} status={status} species={species} image={image}/>
-	))
+	const handleClick = async (action) => {
+		if (action === "next" && data.next != null) {
+			const page = data.next.split("?")[1];
+			const { results, info } = await listCharacters(page);
+			setCharacters(results);
+			setData(info);
+		}
+		else if(action === "prev" && data.prev != null){
+		const page = data.prev.split("?")[1];
+		const {results, info } = await listCharacters(page);
+		setCharacters(results);
+		setData(info);
+		}
+	};
+
+	console.log(data);
+
 	return (
 		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<NavBar />
-				{usersUI}
-				{CharactersUI}
-			</header>
-			
+			<div className="fixed-container">
+				<button onClick={() => handleClick("prev")} className="btn">
+					Prev
+				</button>
+
+				<button onClick={() => handleClick("next")} className="btn">
+					Next
+				</button>
+
+			</div>
+			{characters.map(({ id, image, name, species, status }) => (
+				<Character
+					key={id}
+					image={image}
+					name={name}
+					species={species}
+					status={status}
+				/>
+			))}
 		</div>
 	);
 }
 
 export default App;
+
