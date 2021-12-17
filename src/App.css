@@ -59,3 +59,21 @@
 .btn:hover {
 	background-color: rgb(24, 55, 158);
 }
+
+.btn:disabled {
+	background-color: rgb(143, 27, 27);
+}
+
+.container {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #282c34;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+}
