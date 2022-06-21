@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react/cjs/react.development";
 
 // CSS
@@ -15,7 +15,7 @@ export default function UsersNew() {
     const [birthday, setBirthday] = useState("");
     const [ocupation, setOcupation] = useState("");
     const [gender, setGender] = useState("");
-
+	const [reverseText, setReverseText] = useState("")
     const cleanForm = ()=>{
         setFirstName("");
         setLastName("");
@@ -23,13 +23,12 @@ export default function UsersNew() {
         setOcupation("");
         setGender("");
     }
-    
     const handleSubmit = async(event)=>{
-    event.preventDefault()
-    
-    
-    try {
-    
+		event.preventDefault()
+		
+	try {
+			
+		
         const data = {firstName,
             lastName,
             gender,
@@ -37,7 +36,7 @@ export default function UsersNew() {
             birthday
         };
     
-        await createUser(data)
+       await createUser(data)
     
         cleanForm()
     
@@ -46,6 +45,13 @@ export default function UsersNew() {
         console.error(error.message)
     }
     }
+	useEffect(()=>{
+		const arr = firstName.split("")
+		console.log(arr)
+		const reverseArr = arr.reverse()
+		const joinArr = reverseArr.join("")	
+		setReverseText(joinArr)
+	}, [firstName])
 
 
 	return (
@@ -85,6 +91,20 @@ export default function UsersNew() {
 				/>
                 <button type="submit">Crear</button>
 			</form>
+
+
+
+			<div>
+				<div>
+					{firstName}
+				</div>
+				<div>
+					{reverseText}
+				</div>
+				<div>
+					{ocupation}
+				</div>
+			</div>
 		</div>
 	);
 }
