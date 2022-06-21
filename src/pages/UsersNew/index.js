@@ -58,6 +58,7 @@ export default function UsersNew() {
 		<div className="container flex-col">
 			<h1>Crea un usuario</h1>
 			<form onSubmit={handleSubmit}>
+				/*Este es el Input del cual toma el string que invierte*/
 				<Input
 					id="firstName"
 					label="First Name"
